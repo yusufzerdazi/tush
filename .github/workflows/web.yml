@@ -39,7 +39,7 @@ jobs:
         azcliversion: 2.52.0
         inlineScript: |
           az storage blob delete-batch --account-name tush --source '$web'
-          az storage blob upload-batch --destination '$web' --account-name tush --source ./build --overwrite
+          az storage blob upload-batch --destination '$web' --account-name tush --source ./dist --overwrite
           az cdn endpoint purge -g tush -n tush --profile-name tush --content-paths "/*"
 
   
