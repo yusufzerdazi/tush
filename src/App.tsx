@@ -1,14 +1,12 @@
-import viteLogo from '/tush.svg'
+import viteLogo from '/tush.png'
 import './App.css'
 
 function App() {
   return (
-    <>
-      <div>
-        <img src={viteLogo} className="logo" alt="Vite logo" />
-      </div>
-      <h2>Coming Soon!</h2>
-    </>
+    <div className="logoContainer">
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <h1>Coming Soon!</h1>
+    </div>
   )
 }
 
