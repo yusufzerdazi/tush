@@ -1,6 +1,3 @@
-import './App.css'
-import { Card, Footer, Navbar } from "flowbite-react";
-
 function App() {
   return (
     <>
