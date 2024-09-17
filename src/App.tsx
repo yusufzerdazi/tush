@@ -3,7 +3,7 @@ function App() {
     <>
       <div className="p-5 flex flex-col items-center justify-center">
         <div className='pb-10'>
-          <img className="max-w-80 w-full" src="tush.png"></img>
+          <img className="max-w-80 w-full" src="tush.svg"></img>
         </div>
         <section className='max-w-screen-md text-center pb-10'>
           <h2 className='text-3xl '><b>What is TUSH?</b></h2>
