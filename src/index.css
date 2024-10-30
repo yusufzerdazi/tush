@@ -8,8 +8,29 @@
   color: #dae7e0;
 }
 
+@font-face {
+  font-family: 'Plinc';
+  src: url('/plinc.ttf');
+}
+
+h1 {
+  font-family: "Plinc";
+}
+
 h2 {
-  font-family: "Handlee", cursive;
+  font-family: "Plinc";
+}
+
+p {
+  font-family: "Roboto Mono", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  opacity: 0.7;
 }
