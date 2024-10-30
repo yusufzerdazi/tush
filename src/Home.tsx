@@ -10,10 +10,10 @@ function Home() {
                 </p>
             </section>
             <section className='max-w-screen-md w-full text-center pb-10'>
-                <Link to="events"><h2 className='text-3xl pb-2 link'><b>Events</b></h2></Link>
-                <Link to="djs"><h2 className='text-3xl pb-2 link'><b>DJs</b></h2></Link>
-                <Link to="art"><h2 className='text-3xl pb-2 link'><b>Art</b></h2></Link>
-                <a href="https://instagram.com/tush_space"><h2 className='text-3xl pb-2 link'><b>Instagram</b></h2></a>
+                <Link to="events"><span className='text-3xl p-2 link'><b>Events</b></span></Link>
+                <Link to="djs"><span className='text-3xl p-2 link'><b>DJs</b></span></Link>
+                <Link to="art"><span className='text-3xl p-2 link'><b>Art</b></span></Link>
+                <a href="https://instagram.com/tush_space"><span className='text-3xl pb-2 link'><b>Instagram</b></span></a>
             </section>
         </>
     )
