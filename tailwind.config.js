@@ -7,7 +7,13 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '1000': '1000px',
+        '800': '800px',
+        '600': '600px',
+      }
+    },
   },
   plugins: [flowbite.plugin()],
 };
