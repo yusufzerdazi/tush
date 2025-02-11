@@ -1,4 +1,6 @@
 
+param location string = resourceGroup().location
+
 resource blobStorage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   sku: {
     name: 'Standard_LRS'
@@ -38,10 +40,10 @@ resource blobStorage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 
 resource cdn 'Microsoft.Cdn/profiles@2023-05-01' = {
   name: 'tush'
-  location: 'SouthCentralUs'
+  location: location
   tags: {}
   sku: {
-    name: 'Standard_Verizon'
+    name: 'Standard_Microsoft'
   }
   properties: {}
 }
@@ -51,7 +53,7 @@ resource cdn 'Microsoft.Cdn/profiles@2023-05-01' = {
 resource endpoint 'Microsoft.Cdn/profiles/endpoints@2023-05-01' = {
   parent: cdn
   name: 'tush'
-  location: 'SouthCentralUs'
+  location: location
   tags: {}
   properties: {
     originHostHeader: 'tush.z6.web.core.windows.net'
@@ -78,9 +80,51 @@ resource endpoint 'Microsoft.Cdn/profiles/endpoints@2023-05-01' = {
         }
       }
     ]
+    deliveryPolicy: {
+      description: 'Delivery policy with rule set'
+      rules: [
+        {
+          name: 'HttpsRedirect'
+          order: 1
+          actions: [
+            {
+              name: 'UrlRedirect'
+              parameters: {
+                redirectType: 'PermanentRedirect'
+                typeName: 'DeliveryRuleUrlRedirectActionParameters'
+                destinationProtocol: 'Https'
+              }
+            }
+          ]
+          conditions: [
+            {
+              name: 'RequestScheme'
+              parameters: {
+                operator: 'Equal'
+                matchValues: [
+                  'HTTP'
+                ]
+                negateCondition: false
+                transforms: []
+                typeName: 'DeliveryRuleRequestSchemeConditionParameters'
+              }
+            }
+          ]
+        }
+      ]
+    }
     originGroups: []
     geoFilters: []
     urlSigningKeys: []
+  }
+}
+
+// CDN Custom Domain Resource
+resource cdnCustomDomain 'Microsoft.Cdn/profiles/endpoints/customDomains@2023-05-01' = {
+  name: 'tush'
+  parent: endpoint
+  properties: {
+    hostName: 'www.tushspace.com'
   }
 }
 
